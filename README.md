@@ -9,39 +9,42 @@ gin: go get -u github.com/gin-gonic/gin<br/>
 以太坊：go get github.com/ethereum/go-ethereum<br/>
 
 ## 三、文件列表
--cmd
---main.go  --项目启动文件
--config
---database.go  --数据库配置及数据表初始化文件
--controllers
---auctionController.go  --拍卖相关接口
---bidController.go  --出价接口
---nftownerController.go  --nft所有者相关接口
--middleware
---logger.go
--models
---auction.go
---big.go
---nftowner.go
--nfteventdeal
---nftsuscribe.go  --监听链上事件方法
---synchistory.go  --项目启动时同步遗漏历史记录方法
--routes
---routes.go  --路由配置
--utils
---response.go
+- cmd
+- - main.go  --项目启动文件
+- config
+- - database.go  --数据库配置及数据表初始化文件
+- controllers
+- - auctionController.go  --拍卖相关接口
+- - bidController.go  --出价接口
+- - nftownerController.go  --nft所有者相关接口
+- middleware
+- - logger.go
+- models
+- - auction.go
+- - big.go
+- - nftowner.go
+- nfteventdeal
+- - nftsuscribe.go  --监听链上事件方法
+- - synchistory.go  --项目启动时同步遗漏历史记录方法
+- routes
+- - routes.go  --路由配置
+- utils
+- - response.go
 
 
 ### 异常处理代码位置：
 #### 1、网络链接断掉：nftsuscribe.go  第 74 行：创建goroutine重新连接网络
-```			case err := <-sub.Err():
-				log.Printf("subscription error: %v", err)
-				client.Close()
-				go SubscribeNftMarket()```
+```shell
+	case err := <-sub.Err():
+		log.Printf("subscription error: %v", err)
+		client.Close()
+		go SubscribeNftMarket()
+```
 
 #### 1、服务器重启：nftsuscribe.go  第 66 行：同步历史记录（查询出表中最大的 block_number，从此处开始同步之后的所有事件）
-```go syncHisotry()```
-
+```shell
+go syncHisotry()
+```
 
 ## 四、启动方式
 homework04> go run .\cmd\main.go
