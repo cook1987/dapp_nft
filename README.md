@@ -1,5 +1,5 @@
 ## 一、项目运行环境：<br/>
-go版本：go1.25.4<br/>
+go版本：go1.25.0<br/>
 mysql版本: 8.0<br/>
 ## 二、依赖安装步骤
 gorm: go get -u gorm.io/gorm<br/>
@@ -47,7 +47,7 @@ go syncHisotry()
 ```
 
 ## 四、启动方式
-homework04> go run .\cmd\main.go
+> go run .\cmd\main.go
 ## 五、接口列表
 ### 1. 拍卖列表接口：GET http://localhost:8080/api/v1/auctionPage
 BODY:<br/>
